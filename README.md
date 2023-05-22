@@ -1,29 +1,26 @@
 # test-afp-modelo
 
-This template should help get you started developing with Vue 3 in Vite.
+Dentro de este proyecto, se encuentran tanto el ejercicio 1 y ejercicio 2 de la prueba de selección para el puesto de desarrollador en AFP Modelo
 
-## Recommended IDE Setup
+## Lenguaje
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+Este proyecto esta desarrollado en [Vue.js 3.X](https://vuejs.org/)
 
-## Customize configuration
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+## Prerequisitos
 
-## Project Setup
+NodeJS (En este caso, version 18.12.1)
+
+## Instalacion de Paquetes
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+## Compilar y correr el proyecto
 
 ```sh
 npm run dev
 ```
 
-### Compile and Minify for Production
 
-```sh
-npm run build
-```

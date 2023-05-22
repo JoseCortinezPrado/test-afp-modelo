@@ -1,4 +1,10 @@
 <template>
+    <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" :href="'/'">Volver Atras</a>
+        </div>
+    </nav>
+
     <div class="container">
         <div class="row">
             <h2 class="text-center titulo">Ejercicio N° 1</h2>
@@ -80,11 +86,11 @@ export default {
             description: ''
         });
 
-        const confirmOption = (title ,message, icon) => {
+        const confirmOption = (title, message, icon) => {
             return Swal.fire({
                 title: title,
                 text: message,
-                icon: icon, 
+                icon: icon,
                 showCancelButton: true,
                 cancelButtonText: 'Cancelar',
                 confirmButtonText: 'Aceptar',
@@ -117,7 +123,7 @@ export default {
 
         const completeTask = (task) => {
             confirmOption('¿Estas Seguro?', 'Estos cambios no se pueden revertir', 'warning').then(r => {
-                if(r.isConfirmed){
+                if (r.isConfirmed) {
                     store.commit('completeTask', task);
                     toast('Tarea Completada', 'success');
                 }
@@ -128,9 +134,9 @@ export default {
 
         const deleteTask = (task) => {
             confirmOption('¿Estas Seguro?', '¿Estas seguro que quieres eliminar esta tarea?', 'warning').then(r => {
-                if(r.isConfirmed){
+                if (r.isConfirmed) {
                     store.commit('deleteTask', task);
-                    toast('Tarea Eliminada', 'success');        
+                    toast('Tarea Eliminada', 'success');
                 }
             }).catch(r => {
                 toast('A ocurrido un error', 'warning');
@@ -150,14 +156,11 @@ export default {
   
 <style>
 .titulo {
-    padding: 40px 0 40px 0;
+    padding: 10px 0 40px 0;
     color: #1a171c;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 500;
 }
 
-.container {
-    margin-top: 20px;
-}
 </style>
   
