@@ -9,6 +9,7 @@ export default createStore({
         return {
             popularMovies: [],
             selectedMovie: null,
+            movieCast: []
         };
     },
     mutations: {
@@ -18,6 +19,9 @@ export default createStore({
         setSelectedMovie(state, movie) {
             state.selectedMovie = movie;
         },
+        setMovieCast(state, cast){
+            state.movieCast = cast
+        }
     },
     actions: {
         fetchPopularMovies({ commit }) {
@@ -36,21 +40,33 @@ export default createStore({
                     console.error(error);
                 });
         },
-        fetchMovieDetails({ commit }, movieId) {
-            axios
-                .get(`https://api.themoviedb.org/3/movie/${movieId}`, {
+        async fetchMovieDetails({ commit }, movieId) {
+            try {
+                const response = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}`, {
                     params: {
                         api_key: key,
-                    },
-                })
-                .then((response) => {
-                    const movie = response.data;
-                    commit('setSelectedMovie', movie);
-                })
-                .catch((error) => {
-                    console.error(error);
+                        language: 'es-MX'
+                    }
                 });
+                const movie = response.data;
+                commit('setSelectedMovie', movie);
+            } catch (error) {
+                console.error(error)
+            }
         },
+        async fetchMovieCast({ commit }, movieId) {
+            try{
+                const response = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}/credits`,{
+                    params:{
+                        api_key: key
+                    }
+                });
+                const movieCast = response.data.cast;
+                commit('setMovieCast', movieCast);
+            } catch (error){
+                console.error(error)
+            }
+        }
     },
 });
 
